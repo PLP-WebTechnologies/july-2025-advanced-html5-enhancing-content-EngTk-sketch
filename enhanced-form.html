@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enhanced HTML5 Page with Media & Form</title>
+  <style>
+    /* Minimal styling so the page is readable */
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; line-height: 1.5; padding: 1rem; max-width: 980px; margin: auto; }
+    header, main, footer { margin-bottom: 1.25rem; }
+    figure { margin: 0 0 1rem 0; }
+    img { max-width: 100%; height: auto; display:block; }
+    .media-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    @media (min-width: 900px) { .media-grid { grid-template-columns: 1fr 1fr; } }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: .4rem .6rem; text-align: left; }
+    fieldset { margin-bottom: 1rem; padding: .8rem; }
+    label { display:block; margin-bottom:.2rem; }
+    .small-help { font-size:.9rem; color:#555; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome — Enhanced Media + HTML5 Form</h1>
+    <p>This page demonstrates lists, tables, embedded media (image + video), and a full HTML5 form with native validation.</p>
+  </header>
+
+  <main>
+
+    <!-- Lists -->
+    <section>
+      <h2>Lists</h2>
+      <p class="small-help">Example unordered and ordered lists.</p>
+      <ul>
+        <li>Mango</li>
+        <li>Banana</li>
+        <li>Strawberry</li>
+      </ul>
+      <ol>
+        <li>Boil water</li>
+        <li>Add tea</li>
+        <li>Steep and serve</li>
+      </ol>
+    </section>
+
+    <!-- Table -->
+    <section>
+      <h2>Weekly Study Timetable</h2>
+      <table>
+        <thead>
+          <tr><th>Day</th><th>Subject</th><th>Duration (hrs)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Monday</td><td>Mathematics</td><td>2</td></tr>
+          <tr><td>Wednesday</td><td>Physics</td><td>3</td></tr>
+          <tr><td>Friday</td><td>Programming</td><td>2</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Media Section -->
+    <section>
+      <h2>Media Gallery — Maldives + Matata (Bien)</h2>
+      <p class="small-help">The image below is a public-domain Maldives photo (Wikimedia Commons). The song/video is embedded from YouTube (official upload).</p>
+
+      <div class="media-grid">
+
+        <!-- Public-domain Wikimedia image (direct file URL) -->
+        <figure>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Maldives_island_beach_2.jpg"
+            alt="Aerial view of a Maldives island beach and turquoise water"
+            width="1000"
+            height="667"
+            loading="lazy"
+          >
+          <figcaption>Maldives — aerial beach view (public domain). Source: Wikimedia Commons.</figcaption>
+        </figure>
+
+        <!-- YouTube embed (music video) -->
+        <figure>
+          <!-- Official music video embed (Matata ft. Bien - Mpishi) -->
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/uCTzC3y4kbU"
+            title="Matata ft. Bien - Mpishi (Official Music Video)"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+          <figcaption>Matata ft. Bien — MPISHI (official video). Play for both audio & video.</figcaption>
+        </figure>
+
+      </div>
+
+      <!-- Audio-only fallback (local) -->
+      <p class="small-help">If you prefer an audio-only player, download the MP3 legally and place it in the same folder as this HTML file, then use the audio element below (example file name <code>matata.mp3</code>):</p>
+
+      <audio controls>
+        <source src="matata.mp3" type="audio/mpeg">
+        Your browser does not support the audio element. Alternatively, listen on <a href="https://open.spotify.com/track/45Ly8ztGdYY438piRvlLu9" target="_blank" rel="noopener">Spotify</a> or the YouTube video above.
+      </audio>
+
+    </section>
+
+    <!-- Form Section -->
+    <section>
+      <h2>Registration Form</h2>
+      <form action="#" method="post" novalidate>
+
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <label for="fullname">Full name</label>
+          <input id="fullname" name="fullname" type="text" placeholder="John Doe" required minlength="3" autocomplete="name">
+
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="example@mail.com" required autocomplete="email">
+
+          <label for="dob">Date of birth</label>
+          <input id="dob" name="dob" type="date" required>
+
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="+254..." pattern="^\+?\d{10,15}$" required autocomplete="tel">
+          <p class="small-help">Include country code (e.g. +2547XXXXXXXX).</p>
+
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" required autocomplete="sex">
+            <option value="">--Select--</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>Account details</legend>
+
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" placeholder="username" minlength="5" required autocomplete="username">
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Min. 8 characters" minlength="8" required autocomplete="new-password">
+
+          <label for="confirm-password">Confirm password</label>
+          <input id="confirm-password" name="confirm-password" type="password" placeholder="Re-enter password" minlength="8" required>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences</legend>
+
+          <p>Preferred contact method</p>
+          <label><input type="radio" name="contact-method" value="email" required> Email</label>
+          <label><input type="radio" name="contact-method" value="phone"> Phone</label>
+
+          <label><input type="checkbox" id="newsletter" name="newsletter" checked> Subscribe to newsletter</label>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Trizah Kaveke</p>
+  </footer>
+
+</body>
+</html>
